@@ -22,29 +22,20 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var listView: ListView
 
-    private val phrasess = arrayOf(
-        "مرحبًا", "كيف حالك؟", "شكرًا", "من فضلك",
-        // Add more phrases here
-    )
 
     private val phrases: Array<String> by lazy {
         resources.getStringArray(R.array.phrases_array)
     }
 
-
-
-
+    private val answers: Array<String> by lazy {
+        resources.getStringArray(R.array.answers_array)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-
-
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -56,7 +47,8 @@ class DashboardFragment : Fragment() {
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val selectedPhrase = phrases[position]
-            val dialogFragment = PhraseDialogFragment(selectedPhrase)
+            val correctAnswer = answers[position]
+            val dialogFragment = PhraseDialogFragment(selectedPhrase, correctAnswer)
             dialogFragment.show(parentFragmentManager, "PhraseDialog")
         }
 
