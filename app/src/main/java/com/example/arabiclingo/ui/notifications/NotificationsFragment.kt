@@ -1,6 +1,7 @@
 package com.example.arabiclingo.ui.notifications
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -13,14 +14,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.arabiclingo.R
 import com.example.arabiclingo.databinding.FragmentNotificationsBinding
 import java.io.File
+import java.io.FileInputStream
 import java.io.IOException
 
 
@@ -69,8 +74,72 @@ class NotificationsFragment : Fragment() {
             }
         }
 
+
+        // Inside your onCreateView function
+
+        val shareButton: ImageButton = binding.btnShare
+        shareButton.setOnClickListener {
+            shareImage()
+        }
+
+        val saveButton: ImageButton = binding.btnSave
+        saveButton.setOnClickListener {
+            saveImageToGallery()
+        }
+
+
         return root
     }
+
+    // Inside your NotificationsFragment class
+
+    private fun shareImage() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "image/jpeg"
+        val imageUri = FileProvider.getUriForFile(
+            requireContext(),
+            "com.example.arabiclingo.fileprovider",
+            photoFile
+        )
+        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri)
+        startActivity(Intent.createChooser(shareIntent, "Share Image"))
+    }
+
+    private fun saveImageToGallery() {
+        val imageUri = FileProvider.getUriForFile(
+            requireContext(),
+            "com.example.arabiclingo.fileprovider",
+            photoFile
+        )
+
+        val values = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "ArabicLingo-image.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM + "/ArabicLingo")
+            put(MediaStore.Images.Media.IS_PENDING, 1)
+        }
+
+        val resolver = requireContext().contentResolver
+        val imageCollectionUri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+        val imageUriResult = resolver.insert(imageCollectionUri, values)
+
+        resolver.openOutputStream(imageUriResult!!)?.use { outputStream ->
+            val inputStream = FileInputStream(photoFile)
+            inputStream.copyTo(outputStream)
+            inputStream.close()
+            outputStream.close()
+        }
+
+        values.clear()
+        values.put(MediaStore.Images.Media.IS_PENDING, 0)
+        resolver.update(imageUriResult, values, null, null)
+
+
+        Toast.makeText(requireContext(), "Image saved to gallery", Toast.LENGTH_SHORT).show()
+        binding.btnSave.isEnabled = false
+        binding.btnSave.setBackgroundResource(R.drawable.circle_button_disabled)
+    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -139,12 +208,23 @@ class NotificationsFragment : Fragment() {
             val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
             val rotatedImage = rotateImageIfRequired(takenImage, photoFile.absolutePath)
             binding.imageView.setImageBitmap(rotatedImage)
+
+            // Enable the buttons after an image is captured
+            binding.btnSave.isEnabled = true
+            binding.btnSave.setBackgroundResource(R.drawable.circle_button_background)
+            binding.btnShare.visibility = View.VISIBLE
+            binding.btnSave.visibility = View.VISIBLE
         }
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
+        // Disable the buttons when the view is destroyed
+        binding.btnShare.visibility = View.GONE
+        binding.btnSave.visibility = View.GONE
+        binding.btnTakePicture.visibility = View.VISIBLE
         _binding = null
+
     }
 }

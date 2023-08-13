@@ -130,6 +130,8 @@
     </string>
     <string name="take_picture">Take Picture</string>
     <string name="handwriting">Image of handwriting to share with friends.</string>
+    <string name="share">Share</string>
+    <string name="save_to_gallery">Save to Gallery</string>
 
 
 </resources>

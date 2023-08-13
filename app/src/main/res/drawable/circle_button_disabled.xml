@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#1C1C1C" /> <!-- Change to desired color for disabled state -->
+    <corners android:radius="50dp" />
+</shape>
