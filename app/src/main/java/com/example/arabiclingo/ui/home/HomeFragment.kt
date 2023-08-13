@@ -30,17 +30,13 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        binding.welcome.text = getString(R.string.welcome_message)
 
-        val instructionsContent: TextView = binding.instructionsContent
-        homeViewModel.instructions.observe(viewLifecycleOwner) {
-            instructionsContent.text = it
-        }
+        binding.textHome.text = getString(R.string.learn_tab_instructions)
+        binding.instructionsContent.text = getString(R.string.camera_tab_instructions)
 
         val fadeInAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
+        binding.welcome.startAnimation(fadeInAnimation)
         binding.textHome.startAnimation(fadeInAnimation)
         binding.instructionsContent.startAnimation(fadeInAnimation)
 

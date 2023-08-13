@@ -96,6 +96,40 @@
     </string-array>
 
 
+    <string name="welcome_message">
+        Welcome to ArabicLingo!\n\n
+
+       ArabicLingo offers a comprehensive learning experience, empowering you to communicate effectively in Arabic. Whether
+        you\'re a beginner or seeking to refine your proficiency, ArabicLingo is your partner in language learning. Start your
+        journey now and unlock the world of Arabic language and culture.\n
+    </string>
+
+    <string name="learn_tab_instructions">
+    Translate Tab:\n\n
+
+    In the Translate tab, you will find a list of Arabic phrases. To start learning, follow these steps:\n\n
+
+        1. Tap on a specific phrase from the list.\n
+        2. A box will appear where you can enter the English translation of the selected Arabic phrase.\n
+        3. Press the "Submit" button.\n
+        4. You will be prompted whether your answer is correct.\n
+
+    </string>
+
+    <string name="camera_tab_instructions">
+    Camera Tab:\n\n
+
+    In the Camera tab, you can utilize your phone\'s camera for a unique learning experience:\n\n
+
+        1. Tap on the Camera tab.\n
+        2. Use your phone\'s camera to take a photo of your handwritten Arabic writing.\n
+        3. You can save the photo to your camera roll for future reference.\n
+        4. You can also share the photo with your friends to get feedback or discuss your progress.\n\n
+
+    We hope you enjoy using ArabicLingo to learn Arabic and enhance your language skills. Happy learning!\n\n
+    </string>
+
+
 
 
 </resources>
