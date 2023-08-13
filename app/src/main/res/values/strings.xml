@@ -128,8 +128,8 @@
 
     We hope you enjoy using ArabicLingo to learn Arabic and enhance your language skills. Happy learning!\n\n
     </string>
-
-
+    <string name="take_picture">Take Picture</string>
+    <string name="handwriting">Image of handwriting to share with friends.</string>
 
 
 </resources>
