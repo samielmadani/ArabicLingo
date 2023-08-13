@@ -132,6 +132,8 @@
     <string name="handwriting">Image of handwriting to share with friends.</string>
     <string name="share">Share</string>
     <string name="save_to_gallery">Save to Gallery</string>
+    <string name="share_an_image">Share an Image</string>
+    <string name="save_an_image">Save an image</string>
 
 
 </resources>

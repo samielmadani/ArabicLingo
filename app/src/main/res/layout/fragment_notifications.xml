@@ -32,6 +32,7 @@
 
             <ImageButton
                 android:id="@+id/btnShare"
+                android:contentDescription="@string/share_an_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
@@ -48,6 +49,7 @@
 
             <ImageButton
                 android:id="@+id/btnSave"
+                android:contentDescription="@string/save_an_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
