@@ -3,4 +3,57 @@
     <string name="title_home">Instructions</string>
     <string name="title_dashboard">Learn</string>
     <string name="title_notifications">Camera</string>
+
+
+
+
+
+
+    <string name="phrase_1">مرحبًا Hello</string>
+    <string name="phrase_2">كيف حالك؟ How are you?</string>
+    <string name="phrase_3">شكرًا Thank you</string>
+    <string name="phrase_4">من فضلك Please</string>
+    <string name="phrase_5">نعم Yes</string>
+    <string name="phrase_6">لا No</string>
+    <string name="phrase_7">مع السلامة Goodbye</string>
+    <string name="phrase_8">أنا آسف I am sorry</string>
+    <string name="phrase_9">أنا لا أفهم I do not understand</string>
+    <string name="phrase_10">ماذا تعني؟ What does it mean?</string>
+    <string name="phrase_11">كم الساعة؟ What is the time?</string>
+    <string name="phrase_12">أين هو؟ Where is it?</string>
+    <string name="phrase_13">كم هذا؟ How much is this?</string>
+    <string name="phrase_14">أنا جائع I am hungry</string>
+    <string name="phrase_15">أنا عطشان I am thirsty</string>
+    <string name="phrase_16">أنا تعبان I am tired</string>
+    <string name="phrase_17">أنا بخير I am fine</string>
+    <string name="phrase_18">ما اسمك؟ What is your name?</string>
+    <string name="phrase_19">أين الحمام؟ Where is the bathroom?</string>
+    <string name="phrase_20">ماذا تفعل؟ What are you doing?</string>
+
+    <string-array name="phrases_array">
+        <item>@string/phrase_1</item>
+        <item>@string/phrase_2</item>
+        <item>@string/phrase_3</item>
+        <item>@string/phrase_4</item>
+        <item>@string/phrase_5</item>
+        <item>@string/phrase_6</item>
+        <item>@string/phrase_7</item>
+        <item>@string/phrase_8</item>
+        <item>@string/phrase_9</item>
+        <item>@string/phrase_10</item>
+        <item>@string/phrase_11</item>
+        <item>@string/phrase_12</item>
+        <item>@string/phrase_13</item>
+        <item>@string/phrase_14</item>
+        <item>@string/phrase_15</item>
+        <item>@string/phrase_16</item>
+        <item>@string/phrase_17</item>
+        <item>@string/phrase_18</item>
+        <item>@string/phrase_19</item>
+        <item>@string/phrase_20</item>
+    </string-array>
+
+
+
+
 </resources>

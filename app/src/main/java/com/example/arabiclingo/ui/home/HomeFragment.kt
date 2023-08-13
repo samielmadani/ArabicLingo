@@ -32,6 +32,11 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        val instructionsContent: TextView = binding.instructionsContent
+        homeViewModel.instructions.observe(viewLifecycleOwner) {
+            instructionsContent.text = it
+        }
         return root
     }
 
