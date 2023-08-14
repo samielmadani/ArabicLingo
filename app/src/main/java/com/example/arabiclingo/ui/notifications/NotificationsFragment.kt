@@ -252,6 +252,8 @@ class NotificationsFragment : Fragment() {
 
     @SuppressLint("MissingPermission")
     private fun showTextNotification(text: String) {
+        val text = text.ifEmpty { "\uD83D\uDE2D No Text Could Be Extracted \uD83D\uDE2D" }
+
         if (NotificationManagerCompat.from(requireContext()).areNotificationsEnabled()) {
             val notificationId = 123 // A unique ID for the notification
 
