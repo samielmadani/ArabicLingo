@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,10 @@ import com.example.arabiclingo.R
 import com.example.arabiclingo.databinding.FragmentNotificationsBinding
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.text.TextRecognizer
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.TranslatorOptions
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
@@ -243,10 +248,44 @@ class NotificationsFragment : Fragment() {
             extractedText.append("\n")
         }
 
-        // Display the extracted text as a notification
-        showTextNotification(extractedText.toString())
+        if (extractedText.toString().isEmpty()) {
+            showTextNotification(extractedText.toString())
+        } else {
+            translateIfNecessary(extractedText.toString())
+        }
 
 
+    }
+
+    private fun translateIfNecessary(text: String) {
+        val options = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.ENGLISH)
+            .setTargetLanguage(TranslateLanguage.ARABIC)
+            .build()
+
+        val translator = Translation.getClient(options)
+        val conditions = DownloadConditions.Builder()
+            .requireWifi()
+            .build()
+
+        translator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                translator.translate(text)
+                    .addOnSuccessListener { translatedText ->
+                        // Display the translated text as a notification
+                        showTextNotification("---- ENGLISH ---- \n\n$text \n\n ---- ARABIC TRANSLATION ---- \n\n$translatedText")
+                    }
+                    .addOnFailureListener { exception ->
+                        showToast("Translation failed: ${exception.message}")
+                    }
+                    .addOnCompleteListener {
+                        // Close the translator after translation is complete
+                        translator.close()
+                    }
+            }
+            .addOnFailureListener { exception ->
+                showToast("Model download failed: ${exception.message}")
+            }
     }
 
 
