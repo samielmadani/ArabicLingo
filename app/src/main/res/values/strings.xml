@@ -165,4 +165,55 @@
     <string name="transliterate">Transliterate</string>
 
 
+
+    <!-- ARABIC DEFINITION TRANSLATIONS OF DEFAULT ENGLISH DEFINITIONS -->
+
+    <string name="app_name_ar">عربي لنجو</string>
+
+    <string name="title_home_ar">التعليمات</string>
+    <string name="title_dashboard_ar">ترجمة</string>
+    <string name="title_notifications_ar">كاميرا</string>
+
+
+    <string name="welcome_message_ar">
+        مرحبًا بك في عربي لنجو!\n\n
+
+        يقدم عربي لنجو تجربة تعلم شاملة تمكنك من التواصل بفعالية باللغة العربية. سواء كنت مبتدئًا أو تسعى لتحسين مهاراتك، فإن عربي لنجو هو شريكك في تعلم اللغة. ابدأ رحلتك الآن واستكشف عالم اللغة والثقافة العربية.\n
+    </string>
+
+    <string name="learn_tab_instructions_ar">
+        علامة الترجمة:\n\n
+
+        في علامة الترجمة، ستجد قائمة من العبارات العربية. لبدء التعلم، اتبع هذه الخطوات:\n\n
+
+            ١ انقر فوق عبارة معينة من القائمة.\n
+            ٢ سيظهر مربع حيث يمكنك إدخال الترجمة الإنجليزية للعبارة العربية المحددة.\n
+            ٣ اضغط على زر "إرسال".\n
+            ٤ سيتم طلب منك ما إذا كانت إجابتك صحيحة. إذا كانت صحيحة، ستتحول العبارة العربية إلى اللون الأخضر، وإذا كانت خاطئة ستتحول إلى اللون الأحمر.\n
+
+    </string>
+
+    <string name="camera_tab_instructions_ar">
+        علامة الكاميرا:\n\n
+
+        في علامة الكاميرا، يمكنك استخدام كاميرا هاتفك لتجربة تعلم فريدة:\n\n
+
+            ١ انقر على علامة الكاميرا.\n
+            ٢ استخدم كاميرا هاتفك لالتقاط صورة لكتابتك العربية اليدوية.\n
+            ٣ يمكنك حفظ الصورة في معرض الصور الخاص بك للرجوع إليها في المستقبل.\n
+            ٤ يمكنك أيضًا مشاركة الصورة مع أصدقائك للحصول على تقييم أو مناقشة تقدمك.\n\n
+
+        نأمل أن تستمتع باستخدام ArabicLingo لتعلم اللغة العربية وتحسين مهاراتك اللغوية. استمتع بالتعلم!\n\n
+    </string>
+
+    <string name="take_picture_ar">التقط صورة</string>
+    <string name="handwriting_ar">صورة للخط اليدوي لمشاركتها مع الأصدقاء.</string>
+    <string name="share_ar">مشاركة</string>
+    <string name="save_to_gallery_ar">حفظ في المعرض</string>
+    <string name="share_an_image_ar">مشاركة صورة</string>
+    <string name="save_an_image_ar">حفظ صورة</string>
+    <string name="enter_your_translation_ar">أدخل ترجمتك</string>
+    <string name="translate_the_phrase_ar">ترجم العبارة:</string>
+    <string name="transliterate_ar">نقل الحروف</string>
+
 </resources>
