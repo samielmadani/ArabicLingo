@@ -10,6 +10,8 @@
 
 
     <color name="defaultBackground">#0FFFFFFF</color>
-    <color name="correctBackground">#00B600</color> <!-- Green -->
-    <color name="incorrectBackground">#C10000</color> <!-- Red -->
+    <color name="correctBackground">#00B600</color>
+    <color name="incorrectBackground">#C10000</color>
+
+    <color name="notification_icon_background_color">#FAA272</color>
 </resources>

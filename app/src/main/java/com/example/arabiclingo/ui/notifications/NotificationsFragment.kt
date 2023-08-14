@@ -1,12 +1,16 @@
 package com.example.arabiclingo.ui.notifications
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.ExifInterface
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -18,6 +22,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -38,6 +44,8 @@ class NotificationsFragment : Fragment() {
         private const val CAMERA = 101
         private lateinit var photoFile: File
         private const val FILE_NAME = "photo.jpg"
+        private const val CHANNEL_ID = "my_channel_id"
+
     }
 
     private var _binding: FragmentNotificationsBinding? = null
@@ -51,6 +59,7 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        createNotificationChannel()
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
@@ -153,9 +162,6 @@ class NotificationsFragment : Fragment() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted, open the camera
                 openCamera()
-            } else {
-                // Permission denied, handle accordingly
-                // You can show a message or take other actions here
             }
         }
     }
@@ -211,13 +217,11 @@ class NotificationsFragment : Fragment() {
             val rotatedImage = rotateImageIfRequired(takenImage, photoFile.absolutePath)
             binding.imageView.setImageBitmap(rotatedImage)
 
-            // Enable the buttons after an image is captured
             binding.btnSave.isEnabled = true
             binding.btnSave.setBackgroundResource(R.drawable.circle_button_background)
             binding.btnShare.visibility = View.VISIBLE
             binding.btnSave.visibility = View.VISIBLE
 
-            // Perform text recognition on the captured image
             performTextRecognition(rotatedImage)
         }
     }
@@ -232,7 +236,6 @@ class NotificationsFragment : Fragment() {
         val frame = Frame.Builder().setBitmap(image).build()
         val textBlocks = textRecognizer.detect(frame)
 
-        // Process textBlocks and extract the recognized text
         val extractedText = StringBuilder()
         for (i in 0 until textBlocks.size()) {
             val textBlock = textBlocks.valueAt(i)
@@ -240,12 +243,51 @@ class NotificationsFragment : Fragment() {
             extractedText.append("\n")
         }
 
-        // Now you can use the extracted text as needed
-        showToast("Try to translate:\n $extractedText")
+        // Display the extracted text as a notification
+        showTextNotification(extractedText.toString())
+
+
     }
+
+
+    @SuppressLint("MissingPermission")
+    private fun showTextNotification(text: String) {
+        if (NotificationManagerCompat.from(requireContext()).areNotificationsEnabled()) {
+            val notificationId = 123 // A unique ID for the notification
+
+            val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_dashboard_black_24dp)
+                .setColor(ContextCompat.getColor(requireContext(), R.color.notification_icon_background_color))
+                .setWhen(System.currentTimeMillis())
+                .setContentTitle("Extracted Text")
+                .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            val notificationManager = NotificationManagerCompat.from(requireContext())
+            notificationManager.notify(notificationId, builder.build())
+        } else {
+
+            // Notifications are not enabled, handle this case (e.g., show a toast)
+            showToast( "Notifications are not enabled for this app.")
+        }
+    }
+
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "My Channel",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            channel.description = "My notification channel"
+            val notificationManager = NotificationManagerCompat.from(requireContext())
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
 
