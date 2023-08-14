@@ -1,5 +1,6 @@
 package com.example.arabiclingo.ui.dashboard
 
+import PhraseAdapter
 import PhraseDialogFragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import android.widget.Button
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.arabiclingo.R
 import com.example.arabiclingo.databinding.FragmentDashboardBinding
 
@@ -35,22 +38,14 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
+    ): View? {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        listView = root.findViewById(R.id.listView)
-
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, phrases)
-        listView.adapter = adapter
-
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val selectedPhrase = phrases[position]
-            val correctAnswer = answers[position]
-            val dialogFragment = PhraseDialogFragment(selectedPhrase, correctAnswer)
-            dialogFragment.show(parentFragmentManager, "PhraseDialog")
-        }
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = PhraseAdapter(phrases, answers)
+        recyclerView.adapter = adapter
 
         return root
     }
