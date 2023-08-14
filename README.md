@@ -3,14 +3,14 @@
 
 
 **Overview** -
-ArabicLingo is a mobile app developed as part of the SENG440 course project. The app aims to assist users in extracting text from images, translating it into Arabic, and facilitating sharing or saving of the translated text.
+ArabicLingo is a mobile app developed as part of the SENG440 course project. The app aims to assist Arabic users learn English and English users learn Arabic. The app has a list of Arabic phrases to be translated by the user to English, and the ability of extracting text from images, translating it into Arabic (built in English to Arabic translator), and facilitating sharing or saving of the translated text.
 
 **Purpose** -
-The motivation behind ArabicLingo was to create a practical tool for individuals who frequently encounter written content within images and seek to comprehend the text, particularly in Arabic. This utility could be valuable for travelers, language learners, or anyone grappling with text in photos.
+The motivation behind ArabicLingo was to create a practical tool for individuals who frequently encounter written content within images and seek to comprehend the text in Arabic. This utility could be valuable for travelers, language learners, or anyone grappling with text in photos.
 
 
 **Development Process** - 
-The app's user interface was designed using Kotlin and XML, focusing on an intuitive and fluid user experience. The app encompasses various screens, such as camera, text extraction, translation, and notifications, all organized through fragments.
+The app's user interface was designed using Kotlin and XML, focusing on an intuitive and fluid user experience. The app encompasses various screens, such as camera, list views, text extraction, translation, and notifications, all organized through fragments.
 
 **Grade-Bearing Requirements Met**
 
