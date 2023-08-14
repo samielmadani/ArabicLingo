@@ -1,4 +1,5 @@
-**ArabicLingo App**
+**ArabicLingo**
+-
 
 
 **Overview** -
@@ -19,7 +20,7 @@ The app's user interface was designed using Kotlin and XML, focusing on an intui
 
 3. **List View (RecyclerView):** ArabicLingo utilizes RecyclerView to present the extracted text, enabling seamless scrolling.
 
-4. **Multiple Widgets/UI Components: **The app integrates buttons, textboxes, checkboxes, labels, and more, all equipped with event listeners to manage interactions.
+4. **Multiple Widgets/UI Components:** The app integrates buttons, textboxes, checkboxes, labels, and more, all equipped with event listeners to manage interactions.
 
 5. **Multiple Layouts:** ConstraintLayout and LinearLayout foster diverse layouts, contributing to a consistent user experience.
 
@@ -38,3 +39,6 @@ The app's user interface was designed using Kotlin and XML, focusing on an intui
 12. **Additional Android API Feature:** ArabicLingo employs the ML Kit for text recognition and translation.
 
 13. **Additional Android API Feature:** The app harnesses Android's notification system to promptly inform users of translated text.
+
+
+[](url)
