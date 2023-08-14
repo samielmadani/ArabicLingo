@@ -24,6 +24,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.arabiclingo.R
 import com.example.arabiclingo.databinding.FragmentNotificationsBinding
+import com.google.android.gms.vision.Frame
+import com.google.android.gms.vision.text.TextRecognizer
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
@@ -214,8 +216,38 @@ class NotificationsFragment : Fragment() {
             binding.btnSave.setBackgroundResource(R.drawable.circle_button_background)
             binding.btnShare.visibility = View.VISIBLE
             binding.btnSave.visibility = View.VISIBLE
+
+            // Perform text recognition on the captured image
+            performTextRecognition(rotatedImage)
         }
     }
+
+    private fun performTextRecognition(image: Bitmap) {
+        val textRecognizer = TextRecognizer.Builder(requireContext()).build()
+        if (!textRecognizer.isOperational) {
+            // Text recognizer is not available, handle this case
+            return
+        }
+
+        val frame = Frame.Builder().setBitmap(image).build()
+        val textBlocks = textRecognizer.detect(frame)
+
+        // Process textBlocks and extract the recognized text
+        val extractedText = StringBuilder()
+        for (i in 0 until textBlocks.size()) {
+            val textBlock = textBlocks.valueAt(i)
+            extractedText.append(textBlock.value)
+            extractedText.append("\n")
+        }
+
+        // Now you can use the extracted text as needed
+        showToast("Try to translate:\n $extractedText")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
 
 
     override fun onDestroyView() {
