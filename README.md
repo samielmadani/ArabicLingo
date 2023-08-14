@@ -14,13 +14,13 @@ The app's user interface was designed using Kotlin and XML, focusing on an intui
 
 **Grade-Bearing Requirements Met**
 
-1. **Multiple Screens:** The app implements distinct screens, including the camera, text extraction, translation, and notifications, utilizing fragments.
+1. **Multiple Screens:** The app implements distinct screens, including the camera, translate learning page, modals, text extraction, app instructions, translation, and notifications, utilizing fragments, using a navigation bar.
 
-2. **Implicit Intent:** Implicit intents empower users to effortlessly share the translated text with other applications.
+2. **Implicit Intent:** Implicit intents of the camera app empower users to effortlessly share the translated text with other applications.
 
-3. **List View (RecyclerView):** ArabicLingo utilizes RecyclerView to present the extracted text, enabling seamless scrolling.
+3. **List View (RecyclerView):** ArabicLingo utilizes RecyclerView to present the list of arabic phrases the user will translate to learn, enabling seamless scrolling.
 
-4. **Multiple Widgets/UI Components:** The app integrates buttons, textboxes, checkboxes, labels, and more, all equipped with event listeners to manage interactions.
+4. **Multiple Widgets/UI Components:** The app integrates buttons, image buttons, checkboxes, text boxes, text views, and more, equipped with event listeners to manage interactions.
 
 5. **Multiple Layouts:** ConstraintLayout and LinearLayout foster diverse layouts, contributing to a consistent user experience.
 
@@ -34,11 +34,9 @@ The app's user interface was designed using Kotlin and XML, focusing on an intui
 
 10. **Toast Message:** Toast messages provide real-time user feedback and alerts.
 
-11. **Animation:** XML-defined animations enhance the user interface's visual appeal.
+11. **Animation:** XML-defined animations enhance the user interface's visual appeal, on the instructions tab.
 
-12. **Additional Android API Feature:** ArabicLingo employs the ML Kit for text recognition and translation.
+12. **Additional Android API Feature:** ArabicLingo employs the Google Text Extraction and ML Kit for text recognition and translation.
 
 13. **Additional Android API Feature:** The app harnesses Android's notification system to promptly inform users of translated text.
 
-
-[](url)
