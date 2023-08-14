@@ -96,6 +96,31 @@
     </string-array>
 
 
+    <string-array name="transliterations_array">
+        <item>Marhaban</item>
+        <item>Kayfa halak?</item>
+        <item>Shukran</item>
+        <item>Min fadlik</item>
+        <item>Naam</item>
+        <item>Laa</item>
+        <item>Ma\'a al-salamah</item>
+        <item>Ana aasif</item>
+        <item>Ana laa afham</item>
+        <item>Matha taani?</item>
+        <item>Kam al-saa\'ah?</item>
+        <item>Ayna huwa?</item>
+        <item>Kam hatha?</item>
+        <item>Ana ja\'i</item>
+        <item>Ana \'atshan</item>
+        <item>Ana ta\'baan</item>
+        <item>Ana bikhair</item>
+        <item>Ma ismuka?</item>
+        <item>Ayna al-hammaam?</item>
+        <item>Maadha taf\'al?</item>
+    </string-array>
+
+
+
     <string name="welcome_message">
         Welcome to ArabicLingo!\n\n
 
@@ -135,6 +160,9 @@
     <string name="save_to_gallery">Save to Gallery</string>
     <string name="share_an_image">Share an Image</string>
     <string name="save_an_image">Save an image</string>
+    <string name="enter_your_translation">Enter your translation</string>
+    <string name="translate_the_phrase">Translate the Phrase:</string>
+    <string name="transliterate">Transliterate</string>
 
 
 </resources>

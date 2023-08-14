@@ -4,26 +4,45 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.arabiclingo.R
 
-class PhraseDialogFragment(private val phrase: String, private val correctAnswer: String, private val callback: (Boolean) -> Unit) : DialogFragment() {
+class PhraseDialogFragment(private val phrase: String, private val correctAnswer: String, private val phrases: Array<String>, private val callback: (Boolean) -> Unit) : DialogFragment() {
 
-    constructor() : this("", "", { _ -> }) {
+    constructor() : this("", "", emptyArray(), { _ -> }) {
         // Empty constructor required by Android's FragmentManager
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val inputEditText = EditText(requireContext())
+        val view = requireActivity().layoutInflater.inflate(R.layout.dialog_phrase, null)
+        val inputEditText = view.findViewById<EditText>(R.id.inputEditText)
         inputEditText.requestFocus()
         inputEditText.showKeyboard()
 
+        val textPhrase = view.findViewById<TextView>(R.id.textPhrase)
+        val checkBoxShowEnglish = view.findViewById<CheckBox>(R.id.checkBoxShowEnglish)
+
+        textPhrase.text = phrase
+
+        checkBoxShowEnglish.setOnCheckedChangeListener { _, isChecked ->
+            val transliterations = resources.getStringArray(R.array.transliterations_array)
+            if (isChecked) {
+                val phraseIndex = phrases.indexOf(phrase)
+                if (phraseIndex != -1 && phraseIndex < transliterations.size) {
+                    textPhrase.text = transliterations[phraseIndex]
+                }
+            } else {
+                textPhrase.text = phrase
+            }
+        }
 
         return AlertDialog.Builder(requireContext())
-            .setTitle("Translate Phrase")
-            .setMessage("Translate the phrase: $phrase")
-            .setView(inputEditText)
+            .setTitle("Translate the Phrase:")
+            .setView(view)
             .setPositiveButton("Submit") { _, _ ->
                 val userTranslation = inputEditText.text.toString()
                 val isCorrect = userTranslation.equals(correctAnswer, ignoreCase = true)

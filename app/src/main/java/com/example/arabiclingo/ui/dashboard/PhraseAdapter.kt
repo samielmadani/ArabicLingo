@@ -28,7 +28,7 @@ class PhraseAdapter(private val phrases: Array<String>, private val answers: Arr
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val correctAnswer = answers[position]
-            val dialogFragment = PhraseDialogFragment(phrase, correctAnswer) { isCorrect ->
+            val dialogFragment = PhraseDialogFragment(phrase, correctAnswer, phrases) { isCorrect ->
                 if (isCorrect) {
                     holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.correctBackground))
                 } else {
