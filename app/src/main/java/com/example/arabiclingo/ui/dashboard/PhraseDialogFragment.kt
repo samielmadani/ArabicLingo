@@ -8,7 +8,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 
-class PhraseDialogFragment(private val phrase: String, private val correctAnswer: String) : DialogFragment() {
+class PhraseDialogFragment(private val phrase: String, private val correctAnswer: String, private val callback: (Boolean) -> Unit) : DialogFragment() {
+
+    constructor() : this("", "", { _ -> }) {
+        // Empty constructor required by Android's FragmentManager
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inputEditText = EditText(requireContext())
@@ -22,12 +26,13 @@ class PhraseDialogFragment(private val phrase: String, private val correctAnswer
             .setView(inputEditText)
             .setPositiveButton("Submit") { _, _ ->
                 val userTranslation = inputEditText.text.toString()
-                if (userTranslation.equals(correctAnswer, ignoreCase = true)) {
-                    // Set the item color to green in the list view
+                val isCorrect = userTranslation.equals(correctAnswer, ignoreCase = true)
+                if (isCorrect) {
+                    callback(true)
                     showToast("$userTranslation is Correct!")
                 } else {
+                    callback(false)
                     showToast("$userTranslation is Incorrect. The correct answer is: $correctAnswer")
-
                 }
             }
             .setNegativeButton("Cancel", null)

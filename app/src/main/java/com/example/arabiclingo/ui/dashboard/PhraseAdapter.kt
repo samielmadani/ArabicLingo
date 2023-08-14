@@ -2,6 +2,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arabiclingo.R
@@ -22,13 +23,22 @@ class PhraseAdapter(private val phrases: Array<String>, private val answers: Arr
         val phrase = phrases[position]
         holder.phraseTextView.text = phrase
 
+        holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.defaultBackground))
+
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val correctAnswer = answers[position]
-            val dialogFragment = PhraseDialogFragment(phrase, correctAnswer)
+            val dialogFragment = PhraseDialogFragment(phrase, correctAnswer) { isCorrect ->
+                if (isCorrect) {
+                    holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.correctBackground))
+                } else {
+                    holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.incorrectBackground))
+                }
+            }
             dialogFragment.show((context as FragmentActivity).supportFragmentManager, "PhraseDialog")
         }
     }
+
 
     override fun getItemCount(): Int = phrases.size
 }

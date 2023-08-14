@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="defaultBackground">#0FFFFFFF</color>
+    <color name="correctBackground">#00B600</color> <!-- Green -->
+    <color name="incorrectBackground">#C10000</color> <!-- Red -->
 </resources>
