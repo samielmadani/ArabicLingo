@@ -40,21 +40,27 @@ class PhraseDialogFragment(private val phrase: String, private val correctAnswer
             }
         }
 
+        val translatePhrase = getString(R.string.translate_the_phrase)
+        val submit = getString(R.string.submit_button)
+        val cancel = getString(R.string.cancel_button)
+        val isTextCorrect = getString(R.string.is_correct)
+        val isNotCorrect = getString(R.string.is_incorrect)
+
         return AlertDialog.Builder(requireContext())
-            .setTitle("Translate the Phrase:")
+            .setTitle(translatePhrase)
             .setView(view)
-            .setPositiveButton("Submit") { _, _ ->
+            .setPositiveButton(submit) { _, _ ->
                 val userTranslation = inputEditText.text.toString()
                 val isCorrect = userTranslation.equals(correctAnswer, ignoreCase = true)
                 if (isCorrect) {
                     callback(true)
-                    showToast("$userTranslation is Correct!")
+                    showToast("'$userTranslation' $isTextCorrect")
                 } else {
                     callback(false)
-                    showToast("$userTranslation is Incorrect. The correct answer is: $correctAnswer")
+                    showToast("'$userTranslation' $isNotCorrect $correctAnswer")
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(cancel, null)
             .create()
     }
 

@@ -150,8 +150,10 @@ class NotificationsFragment : Fragment() {
         values.put(MediaStore.Images.Media.IS_PENDING, 0)
         resolver.update(imageUriResult, values, null, null)
 
+        val imgSave = getString(R.string.image_saved)
 
-        Toast.makeText(requireContext(), "Image saved to gallery", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(requireContext(), imgSave, Toast.LENGTH_SHORT).show()
         binding.btnSave.isEnabled = false
         binding.btnSave.setBackgroundResource(R.drawable.circle_button_disabled)
     }
@@ -258,6 +260,11 @@ class NotificationsFragment : Fragment() {
     }
 
     private fun translateIfNecessary(text: String) {
+        val eng = getString(R.string.english_translation)
+        val ara = getString(R.string.arabic_translation)
+        val translFail = getString(R.string.translation_failed)
+        val modelFail = getString(R.string.model_download_failed)
+
         val options = TranslatorOptions.Builder()
             .setSourceLanguage(TranslateLanguage.ENGLISH)
             .setTargetLanguage(TranslateLanguage.ARABIC)
@@ -273,10 +280,10 @@ class NotificationsFragment : Fragment() {
                 translator.translate(text)
                     .addOnSuccessListener { translatedText ->
                         // Display the translated text as a notification
-                        showTextNotification("---- ENGLISH ---- \n\n$text \n\n ---- ARABIC TRANSLATION ---- \n\n$translatedText")
+                        showTextNotification("$eng \n\n$text \n\n $ara \n\n$translatedText")
                     }
                     .addOnFailureListener { exception ->
-                        showToast("Translation failed: ${exception.message}")
+                        showToast("$translFail ${exception.message}")
                     }
                     .addOnCompleteListener {
                         // Close the translator after translation is complete
@@ -284,14 +291,18 @@ class NotificationsFragment : Fragment() {
                     }
             }
             .addOnFailureListener { exception ->
-                showToast("Model download failed: ${exception.message}")
+                showToast("$modelFail ${exception.message}")
             }
     }
 
 
     @SuppressLint("MissingPermission")
     private fun showTextNotification(text: String) {
-        val text = text.ifEmpty { "\uD83D\uDE2D No Text Could Be Extracted \uD83D\uDE2D" }
+        val missing = getString(R.string.no_text_extracted)
+        val extract = getString(R.string.extracted_text)
+        val notifs = getString(R.string.notifications_not_enabled)
+
+        val text = text.ifEmpty { "\uD83D\uDE2D $missing \uD83D\uDE2D" }
 
         if (NotificationManagerCompat.from(requireContext()).areNotificationsEnabled()) {
             val notificationId = 123 // A unique ID for the notification
@@ -300,7 +311,7 @@ class NotificationsFragment : Fragment() {
                 .setSmallIcon(R.drawable.ic_dashboard_black_24dp)
                 .setColor(ContextCompat.getColor(requireContext(), R.color.notification_icon_background_color))
                 .setWhen(System.currentTimeMillis())
-                .setContentTitle("Extracted Text")
+                .setContentTitle(extract)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(text))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
@@ -309,7 +320,7 @@ class NotificationsFragment : Fragment() {
         } else {
 
             // Notifications are not enabled, handle this case (e.g., show a toast)
-            showToast( "Notifications are not enabled for this app.")
+            showToast(notifs)
         }
     }
 

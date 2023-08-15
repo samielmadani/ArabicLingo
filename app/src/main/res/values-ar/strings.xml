@@ -21,7 +21,7 @@
     <string name="phrase_19">أين الحمام؟</string>
     <string name="phrase_20">ماذا تفعل؟</string>
 
-    <string-array name="phrasesray">
+    <string-array name="answers_array">
         <item>@string/phrase_1</item>
         <item>@string/phrase_2</item>
         <item>@string/phrase_3</item>
@@ -66,7 +66,7 @@
     <string name="answer_19">Where is the bathroom?</string>
     <string name="answer_20">What are you doing?</string>
 
-    <string-array name="answersray">
+    <string-array name="phrases_array">
         <item>@string/answer_1</item>
         <item>@string/answer_2</item>
         <item>@string/answer_3</item>
@@ -154,7 +154,7 @@
             ٤ يمكنك أيضًا مشاركة الصورة مع أصدقائك للحصول على تقييم أو مناقشة تقدمك.\n
             ٥ ستتلقى إشعارًا نصيًا يترجم أي كتابة باللغة الإنجليزية التي تظهر في الصورة.\n\n
 
-        نأمل أن تستمتع باستخدام ArabicLingo لتعلم اللغة العربية وتحسين مهاراتك اللغوية. استمتع بالتعلم!\n\n
+        نأمل أن تستمتع باستخدام عربي لنجو لتعلم اللغة العربية وتحسين مهاراتك اللغوية. استمتع بالتعلم!\n\n
     </string>
 
     <string name="take_picture">التقط صورة</string>
@@ -166,5 +166,18 @@
     <string name="enter_your_translation">أدخل ترجمتك</string>
     <string name="translate_the_phrase">ترجم العبارة:</string>
     <string name="transliterate">نقل الحروف</string>
+    <string name="submit_button">إرسال</string>
+    <string name="cancel_button">إلغاء</string>
+    <string name="is_correct">صحيح!</string>
+    <string name="is_incorrect">غير صحيح. الإجابة الصحيحة هي:</string>
+
+    <string name="image_saved">تم حفظ الصورة في المعرض</string>
+    <string name="english_translation">---- الإنجليزية ----</string>
+    <string name="arabic_translation">---- الترجمة إلى العربية ----</string>
+    <string name="no_text_extracted">تعذر استخراج النص</string>
+    <string name="model_download_failed">فشل تنزيل النموذج:</string>
+    <string name="translation_failed">فشل الترجمة:</string>
+    <string name="extracted_text">النص المستخرج</string>
+    <string name="notifications_not_enabled">الإشعارات غير مفعلة لهذا التطبيق.</string>
 
 </resources>

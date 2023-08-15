@@ -164,5 +164,18 @@
     <string name="enter_your_translation">Enter your translation</string>
     <string name="translate_the_phrase">Translate the Phrase:</string>
     <string name="transliterate">Transliterate</string>
+    <string name="submit_button">Submit</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="is_correct">is Correct!</string>
+    <string name="is_incorrect">is Incorrect. The correct answer is:</string>
+
+    <string name="image_saved">Image saved to gallery</string>
+    <string name="english_translation">---- ENGLISH ----</string>
+    <string name="arabic_translation">---- ARABIC TRANSLATION ----</string>
+    <string name="no_text_extracted">No Text Could Be Extracted</string>
+    <string name="model_download_failed">Model download failed:</string>
+    <string name="translation_failed">Translation failed:</string>
+    <string name="extracted_text">Extracted Text</string>
+    <string name="notifications_not_enabled">Notifications are not enabled for this app.</string>
 
 </resources>
