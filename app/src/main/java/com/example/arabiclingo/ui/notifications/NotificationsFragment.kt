@@ -19,6 +19,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
@@ -112,6 +113,12 @@ class NotificationsFragment : Fragment() {
             binding.btnShare.visibility = View.VISIBLE
             binding.btnSave.visibility = View.VISIBLE
         }
+
+        val fadeInAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
+        binding.btnSave.startAnimation(fadeInAnimation)
+        binding.btnShare.startAnimation(fadeInAnimation)
+        binding.imageView.startAnimation(fadeInAnimation)
+        binding.btnTakePicture.startAnimation(fadeInAnimation)
 
 
         return root
