@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">ArabicLingo</string>
-    <string name="title_home">Instructions</string>
-    <string name="title_dashboard">Translate</string>
-    <string name="title_notifications">Camera</string>
-
-
 
     <string name="phrase_1">مرحبًا</string>
     <string name="phrase_2">كيف حالك؟</string>
@@ -27,7 +21,7 @@
     <string name="phrase_19">أين الحمام؟</string>
     <string name="phrase_20">ماذا تفعل؟</string>
 
-    <string-array name="phrases_array">
+    <string-array name="phrasesray">
         <item>@string/phrase_1</item>
         <item>@string/phrase_2</item>
         <item>@string/phrase_3</item>
@@ -72,7 +66,7 @@
     <string name="answer_19">Where is the bathroom?</string>
     <string name="answer_20">What are you doing?</string>
 
-    <string-array name="answers_array">
+    <string-array name="answersray">
         <item>@string/answer_1</item>
         <item>@string/answer_2</item>
         <item>@string/answer_3</item>
@@ -96,7 +90,7 @@
     </string-array>
 
 
-    <string-array name="transliterations_array">
+    <string-array name="transliterationsray">
         <item>Marhaban</item>
         <item>Kayfa halak?</item>
         <item>Shukran</item>
@@ -121,48 +115,56 @@
 
 
 
-    <string name="welcome_message">
-        Welcome to ArabicLingo!\n\n
 
-       ArabicLingo offers a comprehensive learning experience, empowering you to communicate effectively in Arabic. Whether
-        you\'re a beginner or seeking to refine your proficiency, ArabicLingo is your partner in language learning. Start your
-        journey now and unlock the world of Arabic language and culture.\n
+    <!-- ARABIC DEFINITION TRANSLATIONS OF DEFAULT ENGLISH DEFINITIONS -->
+
+    <string name="app_name">عربي لنجو</string>
+
+    <string name="title_home">التعليمات</string>
+    <string name="title_dashboard">ترجمة</string>
+    <string name="title_notifications">كاميرا</string>
+
+
+    <string name="welcome_message">
+        مرحبًا بك في عربي لنجو!\n\n
+
+        يقدم عربي لنجو تجربة تعلم شاملة تمكنك من التواصل بفعالية باللغة العربية. سواء كنت مبتدئًا أو تسعى لتحسين مهاراتك، فإن عربي لنجو هو شريكك في تعلم اللغة. ابدأ رحلتك الآن واستكشف عالم اللغة والثقافة العربية.\n
     </string>
 
     <string name="learn_tab_instructions">
-    Translate Tab:\n\n
+        علامة الترجمة:\n\n
 
-    In the Translate tab, you will find a list of Arabic phrases. To start learning, follow these steps:\n\n
+        في علامة الترجمة، ستجد قائمة من العبارات العربية. لبدء التعلم، اتبع هذه الخطوات:\n\n
 
-        1. Tap on a specific phrase from the list.\n
-        2. A box will appear where you can enter the English translation of the selected Arabic phrase.\n
-        3. Press the "Submit" button.\n
-        4. You will be prompted whether your answer is correct. If correct, the Arabic phrase will turn green, and if incorrect it will turn red.\n
+            ١ انقر فوق عبارة معينة من القائمة.\n
+            ٢ سيظهر مربع حيث يمكنك إدخال الترجمة الإنجليزية للعبارة العربية المحددة.\n
+            ٣ اضغط على زر "إرسال".\n
+            ٤ سيتم طلب منك ما إذا كانت إجابتك صحيحة. إذا كانت صحيحة، ستتحول العبارة العربية إلى اللون الأخضر، وإذا كانت خاطئة ستتحول إلى اللون الأحمر.\n
 
     </string>
 
     <string name="camera_tab_instructions">
-    Camera Tab:\n\n
+        علامة الكاميرا:\n\n
 
-    In the Camera tab, you can utilize your phone\'s camera for a unique learning experience:\n\n
+        في علامة الكاميرا، يمكنك استخدام كاميرا هاتفك لتجربة تعلم فريدة:\n\n
 
-        1. Tap on the Camera tab.\n
-        2. Use your phone\'s camera to take a photo of your handwritten English writing.\n
-        3. You can save the photo to your camera roll for future reference.\n
-        4. You can also share the photo with your friends to get feedback or discuss your progress.\n
-        5. You will receive a text notification translating any English writing that appeared in the photo.\n\n
+            ١ انقر على علامة الكاميرا.\n
+            ٢ استخدم كاميرا هاتفك لالتقاط صورة لكتابتك العربية اليدوية.\n
+            ٣ يمكنك حفظ الصورة في معرض الصور الخاص بك للرجوع إليها في المستقبل.\n
+            ٤ يمكنك أيضًا مشاركة الصورة مع أصدقائك للحصول على تقييم أو مناقشة تقدمك.\n
+            ٥ ستتلقى إشعارًا نصيًا يترجم أي كتابة باللغة الإنجليزية التي تظهر في الصورة.\n\n
 
-    We hope you enjoy using ArabicLingo to learn Arabic and enhance your language skills. Happy learning!\n\n
+        نأمل أن تستمتع باستخدام ArabicLingo لتعلم اللغة العربية وتحسين مهاراتك اللغوية. استمتع بالتعلم!\n\n
     </string>
 
-    <string name="take_picture">Take Picture</string>
-    <string name="handwriting">Image of handwriting to share with friends.</string>
-    <string name="share">Share</string>
-    <string name="save_to_gallery">Save to Gallery</string>
-    <string name="share_an_image">Share an Image</string>
-    <string name="save_an_image">Save an image</string>
-    <string name="enter_your_translation">Enter your translation</string>
-    <string name="translate_the_phrase">Translate the Phrase:</string>
-    <string name="transliterate">Transliterate</string>
+    <string name="take_picture">التقط صورة</string>
+    <string name="handwriting">صورة للخط اليدوي لمشاركتها مع الأصدقاء.</string>
+    <string name="share">مشاركة</string>
+    <string name="save_to_gallery">حفظ في المعرض</string>
+    <string name="share_an_image">مشاركة صورة</string>
+    <string name="save_an_image">حفظ صورة</string>
+    <string name="enter_your_translation">أدخل ترجمتك</string>
+    <string name="translate_the_phrase">ترجم العبارة:</string>
+    <string name="transliterate">نقل الحروف</string>
 
 </resources>

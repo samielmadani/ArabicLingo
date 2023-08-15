@@ -167,6 +167,9 @@ class NotificationsFragment : Fragment() {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted, open the camera
                 openCamera()
+            } else {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA), requestCode)
+                showToast("Turn on camera permissions")
             }
         }
     }
