@@ -90,27 +90,27 @@
     </string-array>
 
 
-    <string-array name="transliterationsray">
-        <item>Marhaban</item>
-        <item>Kayfa halak?</item>
-        <item>Shukran</item>
-        <item>Min fadlik</item>
-        <item>Naam</item>
-        <item>Laa</item>
-        <item>Ma\'a al-salamah</item>
-        <item>Ana aasif</item>
-        <item>Ana laa afham</item>
-        <item>Matha taani?</item>
-        <item>Kam al-saa\'ah?</item>
-        <item>Ayna huwa?</item>
-        <item>Kam hatha?</item>
-        <item>Ana ja\'i</item>
-        <item>Ana \'atshan</item>
-        <item>Ana ta\'baan</item>
-        <item>Ana bikhair</item>
-        <item>Ma ismuka?</item>
-        <item>Ayna al-hammaam?</item>
-        <item>Maadha taf\'al?</item>
+    <string-array name="transliterations_array">
+        <item>هالو</item>
+        <item>هو أر يو؟</item>
+        <item>ثانك يو</item>
+        <item>بليز</item>
+        <item>يس</item>
+        <item>نو</item>
+        <item>جود باي</item>
+        <item>أي آم ساري</item>
+        <item>أي دو نوت أندرستاند</item>
+        <item>ووت دوز إت مين؟</item>
+        <item>ووت إس دي تايم؟</item>
+        <item>وير إز إت؟</item>
+        <item>هو ميش إز ديس؟</item>
+        <item>أي أم هنغري</item>
+        <item>أي أم ثرستي</item>
+        <item>أي أم تاييرد</item>
+        <item>أي أم فاين</item>
+        <item>وت إز يور نيم؟</item>
+        <item>وير إز دي باذروم؟</item>
+        <item>وت أر يور دوين؟</item>
     </string-array>
 
 
