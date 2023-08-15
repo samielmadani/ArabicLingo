@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.media.ExifInterface
 import android.os.Build
 import android.os.Bundle
@@ -50,6 +51,7 @@ class NotificationsFragment : Fragment() {
         private lateinit var photoFile: File
         private const val FILE_NAME = "photo.jpg"
         private const val CHANNEL_ID = "my_channel_id"
+        private var savedImageBitmap: Bitmap? = null
 
     }
 
@@ -103,11 +105,23 @@ class NotificationsFragment : Fragment() {
             saveImageToGallery()
         }
 
+        if (savedImageBitmap != null) {
+            binding.imageView.setImageBitmap(savedImageBitmap)
+            binding.btnSave.isEnabled = true
+            binding.btnSave.setBackgroundResource(R.drawable.circle_button_background)
+            binding.btnShare.visibility = View.VISIBLE
+            binding.btnSave.visibility = View.VISIBLE
+        }
+
 
         return root
     }
 
-    // Inside your NotificationsFragment class
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        savedImageBitmap = (binding.imageView.drawable as? BitmapDrawable)?.bitmap
+    }
+
 
     private fun shareImage() {
         val shareIntent = Intent(Intent.ACTION_SEND)
@@ -232,6 +246,18 @@ class NotificationsFragment : Fragment() {
             performTextRecognition(rotatedImage)
         }
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        savedImageBitmap?.let {
+            binding.imageView.setImageBitmap(it)
+            binding.btnSave.isEnabled = true
+            binding.btnSave.setBackgroundResource(R.drawable.circle_button_background)
+            binding.btnShare.visibility = View.VISIBLE
+            binding.btnSave.visibility = View.VISIBLE
+        }
+    }
+
 
     private fun performTextRecognition(image: Bitmap) {
         val textRecognizer = TextRecognizer.Builder(requireContext()).build()
