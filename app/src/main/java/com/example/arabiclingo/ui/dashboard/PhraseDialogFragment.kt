@@ -14,7 +14,6 @@ import com.example.arabiclingo.R
 class PhraseDialogFragment(private val phrase: String, private val correctAnswer: String, private val phrases: Array<String>, private val callback: (Boolean) -> Unit) : DialogFragment() {
 
     constructor() : this("", "", emptyArray(), { _ -> }) {
-        // Empty constructor required by Android's FragmentManager
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
