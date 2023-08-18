@@ -58,8 +58,6 @@ class NotificationsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -81,10 +79,8 @@ class NotificationsFragment : Fragment() {
                     Manifest.permission.CAMERA
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                // Permission already granted, open the camera
                 openCamera()
             } else {
-                // Permission not granted, request it
                 ActivityCompat.requestPermissions(
                     requireActivity(),
                     arrayOf(Manifest.permission.CAMERA),
@@ -94,7 +90,6 @@ class NotificationsFragment : Fragment() {
         }
 
 
-        // Inside your onCreateView function
 
         val shareButton: ImageButton = binding.btnShare
         shareButton.setOnClickListener {
@@ -188,7 +183,6 @@ class NotificationsFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, open the camera
                 openCamera()
             }
         }
@@ -269,7 +263,6 @@ class NotificationsFragment : Fragment() {
     private fun performTextRecognition(image: Bitmap) {
         val textRecognizer = TextRecognizer.Builder(requireContext()).build()
         if (!textRecognizer.isOperational) {
-            // Text recognizer is not available, handle this case
             return
         }
 
@@ -312,14 +305,12 @@ class NotificationsFragment : Fragment() {
             .addOnSuccessListener {
                 translator.translate(text)
                     .addOnSuccessListener { translatedText ->
-                        // Display the translated text as a notification
                         showTextNotification("$eng \n\n$text \n\n $ara \n\n$translatedText")
                     }
                     .addOnFailureListener { exception ->
                         showToast("$translFail ${exception.message}")
                     }
                     .addOnCompleteListener {
-                        // Close the translator after translation is complete
                         translator.close()
                     }
             }
@@ -338,7 +329,7 @@ class NotificationsFragment : Fragment() {
         val text = text.ifEmpty { "\uD83D\uDE2D $missing \uD83D\uDE2D" }
 
         if (NotificationManagerCompat.from(requireContext()).areNotificationsEnabled()) {
-            val notificationId = 123 // A unique ID for the notification
+            val notificationId = 123
 
             val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_dashboard_black_24dp)
@@ -352,7 +343,6 @@ class NotificationsFragment : Fragment() {
             notificationManager.notify(notificationId, builder.build())
         } else {
 
-            // Notifications are not enabled, handle this case (e.g., show a toast)
             showToast(notifs)
         }
     }
@@ -379,7 +369,6 @@ class NotificationsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Disable the buttons when the view is destroyed
         binding.btnShare.visibility = View.GONE
         binding.btnSave.visibility = View.GONE
         binding.btnTakePicture.visibility = View.VISIBLE
